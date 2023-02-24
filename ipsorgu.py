@@ -1,4 +1,5 @@
 import requests
+import json
 
 print("  _____             _      ______                ")
 print(" |  __ \           | |    |  ____|               ")
@@ -14,20 +15,22 @@ print("")
 
 ipadress=input("İP ADRESİ GİR: ")
 
-def get_location():
-    response = requests.get(f'https://ipapi.co/{ipadress}/json/').json()
-    location_data = {
+
+def dark_ipinfo():
+    dark=requests.get(f'https://ipapi.co/{ipadress}/json/')
+    res=dark.json()
+    ip_data = {
         "İP ADRESİ": ipadress,
-        "ŞEHİR": response.get("city"),
-        "BÖLGE": response.get("region"),
-        "ÜLKE": response.get("country_name"),
-        "ÜLKE KODu": response.get("country_code"),
-        "SAAT DİLİMİ": response.get("utc_offset"),
-        "POSTA KODU": response.get("postal"),
-        "DİL": response.get("languages"),
-        "PARA BİRİMİ": response.get("currency_name")
+        "ŞEHİR": res.get("city"),
+        "BÖLGE": res.get("region"),
+        "ÜLKE": res.get("country_name"),
+        "ÜLKE KODu": res.get("country_code"),
+        "SAAT DİLİMİ": res.get("utc_offset"),
+        "POSTA KODU": res.get("postal"),
+        "DİL": res.get("languages"),
+        "PARA BİRİMİ": res.get("currency_name")
     }
-    return location_data
+    return ip_data
 
-
-print(get_location())
+print("")
+print(dark_ipinfo())
