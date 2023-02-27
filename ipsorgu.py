@@ -16,21 +16,10 @@ print("")
 ipadress=input("İP ADRESİ GİR: ")
 
 
-def dark_ipinfo():
-    dark=requests.get(f'https://ipapi.co/{ipadress}/json/')
-    res=dark.json()
-    ip_data = {
-        "İP ADRESİ": ipadress,
-        "ŞEHİR": res.get("city"),
-        "BÖLGE": res.get("region"),
-        "ÜLKE": res.get("country_name"),
-        "ÜLKE KODu": res.get("country_code"),
-        "SAAT DİLİMİ": res.get("utc_offset"),
-        "POSTA KODU": res.get("postal"),
-        "DİL": res.get("languages"),
-        "PARA BİRİMİ": res.get("currency_name")
-    }
-    return ip_data
-
+dark=requests.get(f'https://ipapi.co/{ipadress}/json/')
+res=dark.json()
 print("")
-print(dark_ipinfo())
+print("SORGULANAN İP:",ipadress,"\n"+"ŞEHİR:",res.get("city"),"\n"+"BÖLGE:",res.get("region"),"\n"+"ÜLKE:",res.get("country_name"),"\n"+"ÜLKE KODU:",res.get("country_code"),"\n"+"SAAT DİLİMİ:",res.get("utc_offset"),"\n"+"POSTA KODU:",res.get("postal"),"\n"+"DİL:",res.get("languages"),"\n"+"PARA BİRİMİ:",res.get("currency_name"))
+    
+print("")
+print("Sonuçlar Bunlar")
